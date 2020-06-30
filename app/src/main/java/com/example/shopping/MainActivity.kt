@@ -46,7 +46,21 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             noNetwork?.visibility = View.VISIBLE
         }
 
+        commonViewModal!!.allFinalProducts.observe(this, Observer { list ->
+            run {
+
+                if (list.isNotEmpty()) {
+
+                    addToCart.visibility =View.VISIBLE
+                }else{
+                    addToCart.visibility =View.GONE
+                }
+
+            }
+        })
+
         retry.setOnClickListener(this)
+        addToCart.setOnClickListener(this)
 
     }
 
@@ -58,6 +72,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                 progress.visibility = View.GONE
                 adapter = AdapterClass(applicationContext,list,commonViewModal!!)
                 recycler.adapter = adapter
+                adapter.notifyDataSetChanged()
 
             }
         })
@@ -77,10 +92,17 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             R.id.retry -> {
 
                 if (isNetworkAvailable()) {
+                    noNetwork?.visibility = View.GONE
+                    recycler.visibility = View.VISIBLE
                     getProductResponse()
                 } else {
                    Toast.makeText(this,"Please Turn On Internet Connection..",Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            R.id.addToCart -> {
+                val intent = Intent(this,CartActivity::class.java)
+                startActivity(intent)
             }
         }
     }

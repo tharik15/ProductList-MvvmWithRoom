@@ -51,33 +51,25 @@ class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
             count++
             quantity!!.text = count.toString()
 
-            val id = commonViewModel.checkISProductAlredyExist(commonEntity.productId!!)
-            if (id > 0) {
-                commonViewModel.updateQuantityInfo(id!!, quantity!!.text.toString().toInt())
-            } else {
-                commonEntity.selected = true
-                commonViewModel.insertData(commonEntity)
-            }
+            commonEntity.quantity = count
+            commonEntity.selected = true
+            commonViewModel.insertData(commonEntity)
 
         }
-        minus?.setOnClickListener {
+        minus!!.setOnClickListener {
             var count = quantity!!.text.toString().toInt()
             --count
-            if (count == 0) {
+            if (count < 1) {
                 quantity!!.text = "0"
-                val id = commonViewModel.checkISProductAlredyExist(commonEntity.productId!!)
-                if (id > 0){
-                    commonEntity.selected = false
-                    commonViewModel.updateQuantityInfo(id!!,quantity!!.text.toString().toInt())
-                }else {
-                    commonEntity.selected = false
-                    commonViewModel.insertData(commonEntity)
-                }
+                commonEntity.selected = false
+                commonEntity.quantity = count
+                commonViewModel.insertData(commonEntity)
+
             } else {
-                commonEntity.selected = true
                 quantity!!.text = count.toString()
-                val id = commonViewModel.checkISProductAlredyExist(commonEntity.productId!!)
-                commonViewModel.updateQuantityInfo(id, quantity!!.text.toString().toInt())
+                commonEntity.selected = true
+                commonEntity.quantity = count
+                commonViewModel.insertData(commonEntity)
             }
         }
     }

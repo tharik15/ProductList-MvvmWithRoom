@@ -62,8 +62,25 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:text="Try Again"
+            android:fontFamily="@font/quicksand_bold"
             android:textAllCaps="false">
 
         </Button>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/addToCart"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/boder_color"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Add To Cart"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@
 
 
     <string name="splash_name">Shopping</string>
+    <string name="product_list">Product List</string>
+    <string name="cart_page">My Cart</string>
 
 
 </resources>

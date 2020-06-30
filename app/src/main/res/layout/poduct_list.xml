@@ -71,46 +71,54 @@
                 app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="@+id/name">
 
                 <ImageView
                     android:id="@+id/minus"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:background="@drawable/circle_grey_outline_normal"
                     android:clickable="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:src="@drawable/ic_minus"
-                     />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/countTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="0"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:gravity="center"
+                    android:text="0"
                     android:textSize="18sp"
-                    />
+                    app:layout_constraintBottom_toBottomOf="@+id/minus"
+                    app:layout_constraintEnd_toStartOf="@+id/plus"
+                    app:layout_constraintStart_toEndOf="@+id/minus"
+                    app:layout_constraintTop_toTopOf="@+id/minus" />
 
                 <ImageView
                     android:id="@+id/plus"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/circle_grey_outline_normal"
                     android:clickable="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:src="@drawable/ic_plus"
-                    />
-            </RelativeLayout>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
